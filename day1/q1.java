@@ -30,16 +30,13 @@ public class q1 {
             return;
         }
 
-        Integer[] firstArray = firstNumbers.toArray(new Integer[0]);
-        Integer[] secondArray = secondNumbers.toArray(new Integer[0]);
-
-        Arrays.sort(firstArray);
-        Arrays.sort(secondArray);
+        Collections.sort(firstNumbers);
+        Collections.sort(secondNumbers);
 
         Integer sum = 0;
 
-        for (int i = 0; i < firstArray.length; i++) {
-            sum += Math.abs(firstArray[i] - secondArray[i]);
+        for (int i = 0; i < firstNumbers.size(); i++) {
+            sum += Math.abs(firstNumbers.get(i) - secondNumbers.get(i));
         }
 
         System.out.println(sum);

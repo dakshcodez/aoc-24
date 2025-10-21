@@ -36,22 +36,19 @@ public class q1 {
     }
 
     public static boolean checkSafety(Integer[] integerArray) {
-        int flag = 0; //ascending
-        
-        if (integerArray[1] < integerArray[0]) flag = 1; //descending
+        int i = 1;
 
-        for (int i = 1; i < integerArray.length; i++) {
-            if (flag == 0) {
-                if (integerArray[i] < integerArray[i-1]) return false;
-            }else {
-                if (integerArray[i] > integerArray[i-1]) return false;
+        while (i < integerArray.length - 1) {
+            int diff1 = Math.abs(integerArray[i] - integerArray[i-1]);
+            int diff2 = Math.abs(integerArray[i] - integerArray[i+1]);
+
+            if ((integerArray[i] > integerArray[i-1]) && (integerArray[i] < integerArray[i+1]) && (diff1 >= 1 && diff1 <= 3) && (diff2 >= 1 && diff2 <= 3)) {
+                i++;
+            } else if ((integerArray[i] < integerArray[i-1]) && (integerArray[i] > integerArray[i+1]) && (diff1 >= 1 && diff1 <= 3) && (diff2 >= 1 && diff2 <= 3)) {
+                i++;
+            } else {
+                return false;
             }
-        }
-
-        for (int i = 1; i < integerArray.length; i++) {
-            int diff = Math.abs(integerArray[i] - integerArray[i-1]);
-
-            if (diff < 1 || diff > 3) return false;
         }
         return true;
     }
